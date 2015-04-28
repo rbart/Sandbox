@@ -22,6 +22,13 @@ public class TrieNode {
 			throw new RuntimeException("TrieNode already has child for char '"+c+"'");
 		}
 		children[index] = child;
+		numChildren++;
+	}
+	
+	public void removeChild(char c) {
+		if (children[Trie.charToIndex(c)] != null) throw new RuntimeException("No child for char '"+c+"'");
+		children[Trie.charToIndex(c)] = null;
+		numChildren--;
 	}
 	
 	public TrieNode getChild(char c) {
