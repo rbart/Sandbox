@@ -6,10 +6,10 @@ import java.util.Stack;
 
 public class Trie {
 
-	public static final int ALPHABET_SIZE = Character.getNumericValue('z') - Character.getNumericValue('a');
+	public static final int ALPHABET_SIZE = Character.getNumericValue('z') - Character.getNumericValue('a') + 1;
 	
 	public static int charToIndex(char c) {
-		int index = ALPHABET_SIZE - Character.getNumericValue(c);
+		int index = Character.getNumericValue(c) - Character.getNumericValue('a');
 		if (index < 0 || index >= ALPHABET_SIZE) {
 			throw new IllegalArgumentException("Character '"+c+"' outside of alphabet.");
 		}
