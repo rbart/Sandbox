@@ -16,7 +16,7 @@ public class TrieNode {
 		return numChildren == 0;
 	}
 	
-	public void addNewChild(char c, TrieNode child) {
+	public void addChild(char c, TrieNode child) {
 		int index = Trie.charToIndex(c);
 		if (children[index] != null) {
 			throw new RuntimeException("TrieNode already has child for char '"+c+"'");
