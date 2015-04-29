@@ -67,7 +67,10 @@ public class Trie {
 		}
 		if (!current.isWord) return false;
 		numWords--;
-		if (!current.isLeaf()) return true;
+		if (!current.isLeaf()) {
+			current.isWord = false;
+			return true;
+		}
 		else {
 			for (int i = word.length() - 1; i >= 0; i--) {
 				current = path.pop();
