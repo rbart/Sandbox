@@ -8,6 +8,12 @@ public class Trie {
 
 	public static final int ALPHABET_SIZE = Character.getNumericValue('z') - Character.getNumericValue('a') + 1;
 	
+	public static final char[] ALPHABET;
+	
+	static {
+		ALPHABET = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i','j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+	}
+	
 	public static int charToIndex(char c) {
 		int index = Character.getNumericValue(c) - Character.getNumericValue('a');
 		if (index < 0 || index >= ALPHABET_SIZE) {
@@ -16,7 +22,7 @@ public class Trie {
 		return index;
 	}
 	public static char indexToChar(int index) {
-		return (char)(Character.getNumericValue('a')+index);
+		return ALPHABET[index];
 	}
 	
 	/*
@@ -90,8 +96,10 @@ public class Trie {
 			TrieNode current = root.children[i];
 			while (current.numChildren == 1) {
 				int childIndex = current.firstChildIndex();
-				prefix.append(indexToChar(childIndex));
+				char c = indexToChar(childIndex);
+				prefix.append(c);
 				current = current.children[childIndex];
+				if (current.isWord) break;
 			}
 			prefixes.add(prefix.toString());
 		}
