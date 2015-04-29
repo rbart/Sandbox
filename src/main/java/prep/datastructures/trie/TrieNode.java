@@ -26,7 +26,7 @@ public class TrieNode {
 	}
 	
 	public void removeChild(char c) {
-		if (children[Trie.charToIndex(c)] != null) throw new RuntimeException("No child for char '"+c+"'");
+		if (children[Trie.charToIndex(c)] == null) throw new RuntimeException("No child for char '"+c+"'");
 		children[Trie.charToIndex(c)] = null;
 		numChildren--;
 	}
