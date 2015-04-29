@@ -60,11 +60,10 @@ public class Trie {
 	public boolean remove(String word) {
 		TrieNode current = root;
 		Stack<TrieNode> path = new Stack<TrieNode>();
-		path.push(current);
 		for (int i = 0; i < word.length(); i++) {
+			path.push(current);
 			current = current.getChild(word.charAt(i));
 			if (current == null) return false;
-			path.push(current);
 		}
 		if (!current.isWord) return false;
 		numWords--;
